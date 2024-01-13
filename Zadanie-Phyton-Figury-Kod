@@ -68,13 +68,11 @@ class Trojkat(FiguraGeometryczna):
         return 0.5 * self.bok_a * self.wysokosc
 
 def main():
-    # Tworzenie obiektów
     kolo = Kolo(5)
     prostokat = Prostokat(3, 4)
     kwadrat = Kwadrat(2)
     trojkat = Trojkat(3, 4, 5, 6)
 
-    # Wywołanie metod
     kolo.info()
     print(f"Obwód koła: {kolo.oblicz_obwod()}")
     print(f"Pole koła: {kolo.oblicz_pole()}\n")
