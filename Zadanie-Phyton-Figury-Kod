@@ -1,0 +1,95 @@
+import math
+
+class FiguraGeometryczna:
+    def __init__(self, nazwa):
+        self.nazwa = nazwa
+
+    def info(self):
+        print(f"To jest figura geometryczna: {self.nazwa}")
+
+    def oblicz_obwod(self):
+        pass
+
+    def oblicz_pole(self):
+        pass
+
+class Kolo(FiguraGeometryczna):
+    def __init__(self, promien):
+        super().__init__("Koło")
+        self.promien = promien
+
+    def info(self):
+        super().info()
+        print(f"Promień: {self.promien}")
+
+    def oblicz_obwod(self):
+        return 2 * math.pi * self.promien
+
+    def oblicz_pole(self):
+        return math.pi * self.promien ** 2
+
+class Prostokat(FiguraGeometryczna):
+    def __init__(self, bok_a, bok_b):
+        super().__init__("Prostokąt")
+        self.bok_a = bok_a
+        self.bok_b = bok_b
+
+    def info(self):
+        super().info()
+        print(f"Bok a: {self.bok_a}, Bok b: {self.bok_b}")
+
+    def oblicz_obwod(self):
+        return 2 * (self.bok_a + self.bok_b)
+
+    def oblicz_pole(self):
+        return self.bok_a * self.bok_b
+
+class Kwadrat(Prostokat):
+    def __init__(self, bok):
+        super().__init__(bok, bok)
+        self.nazwa = "Kwadrat"
+
+class Trojkat(FiguraGeometryczna):
+    def __init__(self, bok_a, bok_b, bok_c, wysokosc):
+        super().__init__("Trójkąt")
+        self.bok_a = bok_a
+        self.bok_b = bok_b
+        self.bok_c = bok_c
+        self.wysokosc = wysokosc
+
+    def info(self):
+        super().info()
+        print(f"Bok a: {self.bok_a}, Bok b: {self.bok_b}, Bok c: {self.bok_c}, Wysokość: {self.wysokosc}")
+
+    def oblicz_obwod(self):
+        return self.bok_a + self.bok_b + self.bok_c
+
+    def oblicz_pole(self):
+        return 0.5 * self.bok_a * self.wysokosc
+
+def main():
+    # Tworzenie obiektów
+    kolo = Kolo(5)
+    prostokat = Prostokat(3, 4)
+    kwadrat = Kwadrat(2)
+    trojkat = Trojkat(3, 4, 5, 6)
+
+    # Wywołanie metod
+    kolo.info()
+    print(f"Obwód koła: {kolo.oblicz_obwod()}")
+    print(f"Pole koła: {kolo.oblicz_pole()}\n")
+
+    prostokat.info()
+    print(f"Obwód prostokąta: {prostokat.oblicz_obwod()}")
+    print(f"Pole prostokąta: {prostokat.oblicz_pole()}\n")
+
+    kwadrat.info()
+    print(f"Obwód kwadratu: {kwadrat.oblicz_obwod()}")
+    print(f"Pole kwadratu: {kwadrat.oblicz_pole()}\n")
+
+    trojkat.info()
+    print(f"Obwód trójkąta: {trojkat.oblicz_obwod()}")
+    print(f"Pole trójkąta: {trojkat.oblicz_pole()}")
+
+if __name__ == "__main__":
+    main()
